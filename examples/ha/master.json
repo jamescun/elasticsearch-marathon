@@ -1,0 +1,25 @@
+{
+  "id": "/elasticsearch/demo2/masters",
+  "cpus": 0.3,
+  "mem": 300,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "james/elasticsearch-marathon:2.4",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "protocol": "tcp", "containerPort": 9200 },
+        { "protocol": "tcp", "containerPort": 9300 }
+      ]
+    }
+  },
+  "env": {
+    "MARATHON_ADDR": "http://10.0.2.211:8080",
+    "ELASTICSEARCH_CLUSTER_NAME": "demo2",
+    "ELASTICSEARCH_NODE_MASTER": "true",
+    "ELASTICSEARCH_NODE_DATA": "false",
+    "ELASTICSEARCH_HTTP_CORS_ENABLED": "true",
+    "ELASTICSEARCH_HTTP_CORS_ALLOW-ORIGIN": "*"
+  }
+}
